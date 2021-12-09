@@ -55,6 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DSCT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSCT.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSGR.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -74,6 +79,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSTK.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FormChuyenTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuyenTien.Designer.cs">
+      <DependentUpon>FormChuyenTien.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDangKyTK.cs">
       <SubType>Form</SubType>
@@ -119,6 +130,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormChuyenTien.resx">
+      <DependentUpon>FormChuyenTien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDangKyTK.resx">
       <DependentUpon>FormDangKyTK.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +165,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="DSCT.xsc">
+      <DependentUpon>DSCT.xsd</DependentUpon>
+    </None>
+    <None Include="DSCT.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSCT.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSCT.xss">
+      <DependentUpon>DSCT.xsd</DependentUpon>
+    </None>
     <None Include="DSGR.xsc">
       <DependentUpon>DSGR.xsd</DependentUpon>
     </None>

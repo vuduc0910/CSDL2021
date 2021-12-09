@@ -447,9 +447,9 @@ namespace NGANHANG
             this.groupBox1.Controls.Add(mANVLabel);
             this.groupBox1.Controls.Add(this.txtMaNV);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(2, 222);
+            this.groupBox1.Location = new System.Drawing.Point(2, 280);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1450, 414);
+            this.groupBox1.Size = new System.Drawing.Size(1450, 356);
             this.groupBox1.TabIndex = 50;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -542,7 +542,7 @@ namespace NGANHANG
             this.nhanVienGridControl.MainView = this.gridView1;
             this.nhanVienGridControl.MenuManager = this.barManager1;
             this.nhanVienGridControl.Name = "nhanVienGridControl";
-            this.nhanVienGridControl.Size = new System.Drawing.Size(1450, 220);
+            this.nhanVienGridControl.Size = new System.Drawing.Size(1450, 278);
             this.nhanVienGridControl.TabIndex = 49;
             this.nhanVienGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});

@@ -24,6 +24,7 @@ namespace NGANHANG
             this.Validate();
             this.bdsTaiKhoan.EndEdit();
             this.tableAdapterManager.UpdateAll(this.DSTK);
+            
 
         }
 
@@ -80,6 +81,7 @@ namespace NGANHANG
             Program.myReader.Read();
             int matk = int.Parse(Program.myReader.GetValue(0).ToString());
             bdsTaiKhoan.AddNew();
+            dateCreateAt.Text = DateTime.Now.ToString();
             txtSTK.Text = matk.ToString();
             panelControlDetail.Enabled = btnPhucHoi.Enabled = btnLuu.Enabled =flgAdd = true;
             taiKhoanGridControl.Enabled = btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnHieuChinh.Enabled = false;
@@ -163,7 +165,7 @@ namespace NGANHANG
                 }
                 if(bdsTaiKhoan.Count == 0)
                 {
-                    btnXoa.Enabled = false;
+                   btnHieuChinh.Enabled =  btnXoa.Enabled = false;
                 }
             }
         }

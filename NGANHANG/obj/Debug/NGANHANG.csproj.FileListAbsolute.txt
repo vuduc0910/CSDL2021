@@ -159,3 +159,4 @@ C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.FormNhanVien.
 C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.FormKhachHang.resources
 C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.FormTaiKhoan.resources
 C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.FormGoiRut.resources
+C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.FormChuyenTien.resources

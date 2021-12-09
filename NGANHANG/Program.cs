@@ -104,9 +104,6 @@ namespace NGANHANG
             }
             catch (SqlException ex)
             {
-                //if (ex.Message.Contains("Error converting data type varchar to int"))
-                //   MessageBox.Show("Bạn format Cell lại cột \"Ngày Thi\" qua kiểu Number hoặc mở File Excel.");
-                // else MessageBox.Show(ex.Message);
                 conn.Close();
                 return ex.State; // trang thai lỗi gởi từ RAISERROR trong SQL Server qua
             }

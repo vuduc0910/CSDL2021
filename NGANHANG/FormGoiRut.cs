@@ -22,7 +22,30 @@ namespace NGANHANG
 
         private void comboBoxChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (comboBoxChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView" || Program.Logout)
+            {
+                return;
+            }
+            if (comboBoxChiNhanh.SelectedIndex != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+            Program.svname = comboBoxChiNhanh.SelectedValue.ToString();
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối data", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+            this.gD_GOIRUTTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.gD_GOIRUTTableAdapter.Fill(this.DSGR.GD_GOIRUT);
+            this.taiKhoanTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.taiKhoanTableAdapter.Fill(this.DSGR.TaiKhoan);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -40,18 +63,18 @@ namespace NGANHANG
 
         private void FormGoiRut_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'DSGR.NhanVien' table. You can move, or remove it, as needed.
+
             DSGR.EnforceConstraints = false;
             // TODO: This line of code loads data into the 'DSGR.V_NHAN_VIEN' table. You can move, or remove it, as needed.
             this.gD_GOIRUTTableAdapter.Connection.ConnectionString = Program.connstr;
             this.gD_GOIRUTTableAdapter.Fill(this.DSGR.GD_GOIRUT);
-            this.v_NHAN_VIENTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.v_NHAN_VIENTableAdapter.Fill(this.DSGR.V_NHAN_VIEN);
             // TODO: This line of code loads data into the 'DSGR.TaiKhoan' table. You can move, or remove it, as needed.
             this.taiKhoanTableAdapter.Connection.ConnectionString = Program.connstr;
             this.taiKhoanTableAdapter.Fill(this.DSGR.TaiKhoan);
-            // TODO: This line of code loads data into the 'DSGR.NhanVien' table. You can move, or remove it, as needed.
             this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
             this.nhanVienTableAdapter.Fill(this.DSGR.NhanVien);
+            // TODO: This line of code loads data into the 'DSGR.NhanVien' table. You can move, or remove it, as needed.
             // TODO: This line of code loads data into the 'dSGR.GD_GOIRUT' table. You can move, or remove it, as needed.
             if (Program.mGroup == "NGANHANG")
             {
@@ -112,21 +135,24 @@ namespace NGANHANG
             }
             else
             {
-                cmbMaNhanVien.SelectedIndex = vitri;
+               cmbMaNhanVien.SelectedValue = Program.username;
             }
             
             dateEditNgayGD.Text = DateTime.Now.ToString();
             goirutGridControl.Enabled = btnThem.Enabled = btnHieuChinh.Enabled = btnReload.Enabled = btnXoa.Enabled = false;
             btnPhucHoi.Enabled = btnLuu.Enabled = panelControlDetail.Enabled = flgAdd = true;
-            cmbLoaiGD.SelectedIndex = cmbSoTK.SelectedIndex = 0;
+             cmbSoTK.SelectedIndex = 0;
+            cmbLoaiGD.SelectedIndex = 1;
+            cmbLoaiGD.SelectedIndex = 0;
         }
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bdsGR.CancelEdit();
             goirutGridControl.Enabled = btnThem.Enabled = btnHieuChinh.Enabled = btnReload.Enabled = btnXoa.Enabled = false;
             btnPhucHoi.Enabled = btnLuu.Enabled = panelControlDetail.Enabled = true;
             vitri = bdsGR.Position;
+            cmbLoaiGD.Enabled = cmbSoTK.Enabled = txtSoTien.Enabled = false;
+            
         }
 
         private void btnPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -146,14 +172,17 @@ namespace NGANHANG
             }
             goirutGridControl.Enabled = btnThem.Enabled = btnHieuChinh.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
             btnPhucHoi.Enabled = btnLuu.Enabled = panelControlDetail.Enabled = false;
-            if(bdsGR.Count == 0)
+            cmbLoaiGD.Enabled = cmbSoTK.Enabled = txtSoTien.Enabled = true;
+            cmbLoaiGD.SelectedIndex = 1;
+            cmbLoaiGD.SelectedIndex = 0;
+            if (bdsGR.Count == 0)
             {
                 btnHieuChinh.Enabled = btnXoa.Enabled = false;
             }
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        { 
+        {
             if(cmbSoTK.Text.Trim() == "")
             {
                 MessageBox.Show("Vui lòng chọn số tài khoản " , "ERROR", MessageBoxButtons.OK);
@@ -174,37 +203,40 @@ namespace NGANHANG
                 MessageBox.Show("Lỗi kết nối vui lòng thử lại!", "ERROR", MessageBoxButtons.OK);
                 return;
             }
-            string sqlLenh = "EXEC dbo.sp_Kiem_Tra_STK @stk = N'"+cmbSoTK.Text.Trim()+"'";
-            int check = 0;
-            Program.myReader = Program.ExecSqlDataReader(sqlLenh);
-            Program.myReader.Read();
-            check = int.Parse(Program.myReader.GetValue(0).ToString());
-            if(check == -1)
+            if (flgAdd)
             {
-                MessageBox.Show("Số tài khoản không tồn tại, vui lòng kiểm tra lại!", "ERROR", MessageBoxButtons.OK);
-                return;
-            }
-            if(check < int.Parse(txtSoTien.Text.Trim().Replace(",", "")) && cmbLoaiGD.Text == "RT")
-            {
-                MessageBox.Show("Số dư trong tài khoản không đủ, vui lòng kiểm tra lại!", "ERROR", MessageBoxButtons.OK);
-                return;
-            }
-            Program.myReader.Close();
-            try
-            {
-                int sotien = int.Parse(txtSoTien.Text.Trim().Replace(",", ""));
-                sotien = cmbLoaiGD.Text == "RT" ? 0 - sotien : sotien;
-                sqlLenh = "dbo.sp_Goi_Rut_Tien @stk = N'"+ cmbSoTK.Text.Trim() + "', @sotien = "+sotien+"";
+                string sqlLenh = "EXEC dbo.sp_Kiem_Tra_STK @stk = N'" + cmbSoTK.Text.Trim() + "'";
+                int check = 0;
                 Program.myReader = Program.ExecSqlDataReader(sqlLenh);
                 Program.myReader.Read();
+                check = int.Parse(Program.myReader.GetValue(0).ToString());
+                if (check == -1)
+                {
+                    MessageBox.Show("Số tài khoản không tồn tại, vui lòng kiểm tra lại!", "ERROR", MessageBoxButtons.OK);
+                    return;
+                }
+                if (check < int.Parse(txtSoTien.Text.Trim().Replace(",", "")) && cmbLoaiGD.Text == "RT")
+                {
+                    MessageBox.Show("Số dư trong tài khoản không đủ, vui lòng kiểm tra lại!", "ERROR", MessageBoxButtons.OK);
+                    return;
+                }
+                Program.myReader.Close();
+                try
+                {
+                    int sotien = int.Parse(txtSoTien.Text.Trim().Replace(",", ""));
+                    sotien = cmbLoaiGD.Text == "RT" ? 0 - sotien : sotien;
+                    sqlLenh = "dbo.sp_Goi_Rut_Tien @stk = N'" + cmbSoTK.Text.Trim() + "', @sotien = " + sotien + "";
+                    Program.myReader = Program.ExecSqlDataReader(sqlLenh);
+                    Program.myReader.Read();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK);
+                    return;
+                }
+                Program.myReader.Close();
+                Program.conn.Close();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK);
-                return;
-            }
-            Program.myReader.Close();
-            Program.conn.Close();
             try
             {
                 bdsGR.EndEdit();
@@ -221,6 +253,9 @@ namespace NGANHANG
                 this.gD_GOIRUTTableAdapter.Fill(this.DSGR.GD_GOIRUT);
                 return;
             }
+            cmbLoaiGD.SelectedIndex = 1;
+            cmbLoaiGD.SelectedIndex = 0;
+            cmbLoaiGD.Enabled = cmbSoTK.Enabled = txtSoTien.Enabled = true;
             flgAdd = false;
         }
 
@@ -230,7 +265,7 @@ namespace NGANHANG
             {
                 this.gD_GOIRUTTableAdapter.Fill(this.DSGR.GD_GOIRUT);
                 this.taiKhoanTableAdapter.Fill(this.DSGR.TaiKhoan);
-                this.v_NHAN_VIENTableAdapter.Fill(this.DSGR.V_NHAN_VIEN);
+                this.nhanVienTableAdapter.Fill(this.DSGR.NhanVien);
             }
             catch (Exception ex)
             {
@@ -265,9 +300,19 @@ namespace NGANHANG
                 }
                 if (bdsGR.Count == 0)
                 {
-                    btnXoa.Enabled = false;
+                    btnHieuChinh.Enabled = btnXoa.Enabled = false;
                 }
             }
+        }
+
+        private void mANVComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mANVLabel_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

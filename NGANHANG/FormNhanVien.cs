@@ -262,7 +262,10 @@ namespace NGANHANG
             }
             if(bdsNhanVien.Count == 0)
             {
-                btnXoa.Enabled = false;
+                foreach (Form f in Program.frmChinh.MdiChildren)
+                    f.Close();
+                Program.frmChinh.DangNhap();
+                return;
             }
         }
 
@@ -275,6 +278,20 @@ namespace NGANHANG
             }
             if (MessageBox.Show("Bạn có chắc chắn muốn chuyển nhân viên này không?", "Xác Nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
+                //chuyen tran thai xoa
+                if (Program.KetNoi() == 0)
+                {
+                    MessageBox.Show("Lỗi kết nối data", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+                String sqlLenh = "EXEC dbo.sp_Chuyen_Trang_Thai_Xoa @MANV = N'" + txtMaNV.Text + "'";
+                Program.myReader = Program.ExecSqlDataReader(sqlLenh);
+                if (Program.myReader == null) return;
+                Program.myReader.Read();
+                Program.myReader.Close();
+
+
+                //tao moi hoac chuyen trang thai xoa cho nhan vien
                 String sv = Program.svname;
                 Program.svname = Program.svChu;
                 Program.mlogin = Program.remotelogin;

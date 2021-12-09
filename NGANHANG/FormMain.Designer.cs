@@ -183,6 +183,7 @@ namespace NGANHANG
             this.barButtonChuyenTien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonChuyenTien.ImageOptions.Image")));
             this.barButtonChuyenTien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonChuyenTien.ImageOptions.LargeImage")));
             this.barButtonChuyenTien.Name = "barButtonChuyenTien";
+            this.barButtonChuyenTien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonChuyenTien_ItemClick);
             // 
             // barButtonLKKhachHang
             // 

@@ -64,6 +64,7 @@ namespace NGANHANG
             GetDSPM("SELECT * FROM V_DS_PHANMANH");
             comboBoxChiNhanh.SelectedIndex = 1;
             comboBoxChiNhanh.SelectedIndex = 0;
+            comboBoxChiNhanh.SelectedIndex = Program.mChinhanh;
         }
 
         private void buttonDangNhap_Click(object sender, EventArgs e)

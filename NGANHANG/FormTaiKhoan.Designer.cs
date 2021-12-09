@@ -61,7 +61,9 @@ namespace NGANHANG
             this.colCMND = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSODU = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCREATE_AT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControlDetail = new DevExpress.XtraEditors.PanelControl();
+            this.dateCreateAt = new DevExpress.XtraEditors.DateEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoDu = new DevExpress.XtraEditors.TextEdit();
             this.cmbMaChiNhanh = new System.Windows.Forms.ComboBox();
@@ -83,6 +85,8 @@ namespace NGANHANG
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlDetail)).BeginInit();
             this.panelControlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateCreateAt.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateCreateAt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoDu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCMND.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSTK.Properties)).BeginInit();
@@ -341,7 +345,8 @@ namespace NGANHANG
             this.colSOTK,
             this.colCMND,
             this.colSODU,
-            this.colMACN});
+            this.colMACN,
+            this.colCREATE_AT});
             this.gridView1.GridControl = this.taiKhoanGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.ReadOnly = true;
@@ -376,8 +381,14 @@ namespace NGANHANG
             this.colMACN.Visible = true;
             this.colMACN.VisibleIndex = 3;
             // 
+            // colCREATE_AT
+            // 
+            this.colCREATE_AT.FieldName = "CREATE_AT";
+            this.colCREATE_AT.Name = "colCREATE_AT";
+            // 
             // panelControlDetail
             // 
+            this.panelControlDetail.Controls.Add(this.dateCreateAt);
             this.panelControlDetail.Controls.Add(this.label1);
             this.panelControlDetail.Controls.Add(sODULabel);
             this.panelControlDetail.Controls.Add(this.txtSoDu);
@@ -392,6 +403,25 @@ namespace NGANHANG
             this.panelControlDetail.Name = "panelControlDetail";
             this.panelControlDetail.Size = new System.Drawing.Size(1454, 536);
             this.panelControlDetail.TabIndex = 7;
+            // 
+            // dateCreateAt
+            // 
+            this.dateCreateAt.Cursor = System.Windows.Forms.Cursors.No;
+            this.dateCreateAt.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsTaiKhoan, "CREATE_AT", true));
+            this.dateCreateAt.EditValue = null;
+            this.dateCreateAt.Enabled = false;
+            this.dateCreateAt.Location = new System.Drawing.Point(0, 516);
+            this.dateCreateAt.MenuManager = this.barManager1;
+            this.dateCreateAt.Name = "dateCreateAt";
+            this.dateCreateAt.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.dateCreateAt.Properties.Appearance.Options.UseForeColor = true;
+            this.dateCreateAt.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.dateCreateAt.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateCreateAt.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateCreateAt.Size = new System.Drawing.Size(82, 18);
+            this.dateCreateAt.TabIndex = 10;
             // 
             // label1
             // 
@@ -491,6 +521,8 @@ namespace NGANHANG
             ((System.ComponentModel.ISupportInitialize)(this.panelControlDetail)).EndInit();
             this.panelControlDetail.ResumeLayout(false);
             this.panelControlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateCreateAt.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateCreateAt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoDu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCMND.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSTK.Properties)).EndInit();
@@ -541,5 +573,7 @@ namespace NGANHANG
         private DSTKTableAdapters.GD_GOIRUTTableAdapter gD_GOIRUTTableAdapter;
         private DevExpress.XtraEditors.TextEdit txtSoDu;
         private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.DateEdit dateCreateAt;
+        private DevExpress.XtraGrid.Columns.GridColumn colCREATE_AT;
     }
 }
