@@ -43,6 +43,20 @@
             </ControlSetting>
           </ControlSettings>
         </ColumnUISetting>
+        <ColumnUISetting Name="SODUTKCHUYEN">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="TextEdit" Type="DevExpress.XtraEditors.TextEdit" AssemblyName="DevExpress.XtraEditors.v21.1" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="SODUTKNHAN">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="TextEdit" Type="DevExpress.XtraEditors.TextEdit" AssemblyName="DevExpress.XtraEditors.v21.1" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
   </TableUISettings>

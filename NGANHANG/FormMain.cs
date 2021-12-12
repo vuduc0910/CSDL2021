@@ -203,6 +203,40 @@ namespace NGANHANG
                 f.Show();
             }
         }
+
+        private void barButtonSKTK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormReportTaiKhoan));
+            if (frm != null)
+            {
+                frm.Activate();
+                frm.Visible = true;
+            }
+
+            else
+            {
+                FormReportTaiKhoan f = new FormReportTaiKhoan();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonLKKhachHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormReportKhachHang));
+            if (frm != null)
+            {
+                frm.Activate();
+                frm.Visible = true;
+            }
+
+            else
+            {
+                FormReportKhachHang f = new FormReportKhachHang();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
    
 }

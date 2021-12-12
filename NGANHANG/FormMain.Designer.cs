@@ -192,6 +192,7 @@ namespace NGANHANG
             this.barButtonLKKhachHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonLKKhachHang.ImageOptions.Image")));
             this.barButtonLKKhachHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonLKKhachHang.ImageOptions.LargeImage")));
             this.barButtonLKKhachHang.Name = "barButtonLKKhachHang";
+            this.barButtonLKKhachHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonLKKhachHang_ItemClick);
             // 
             // barButtonSKGD
             // 
@@ -208,6 +209,7 @@ namespace NGANHANG
             this.barButtonSKTK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonSKTK.ImageOptions.Image")));
             this.barButtonSKTK.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonSKTK.ImageOptions.LargeImage")));
             this.barButtonSKTK.Name = "barButtonSKTK";
+            this.barButtonSKTK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSKTK_ItemClick);
             // 
             // ribbonPage1
             // 
