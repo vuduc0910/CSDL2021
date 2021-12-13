@@ -262,3 +262,5 @@ C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.XtraReportTai
 C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.FormReportTaiKhoan.resources
 C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.FormReportKhachHang.resources
 C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.XtraReportKhachHang.resources
+C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.FormReportGiaoDich.resources
+C:\Users\vuduc\Desktop\CSDLPT\NGANHANG\NGANHANG\obj\Debug\NGANHANG.XtraReportGiaoDich.resources

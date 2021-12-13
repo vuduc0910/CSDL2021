@@ -201,6 +201,7 @@ namespace NGANHANG
             this.barButtonSKGD.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonSKGD.ImageOptions.Image")));
             this.barButtonSKGD.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonSKGD.ImageOptions.LargeImage")));
             this.barButtonSKGD.Name = "barButtonSKGD";
+            this.barButtonSKGD.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSKGD_ItemClick);
             // 
             // barButtonSKTK
             // 

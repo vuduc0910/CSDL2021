@@ -43,6 +43,13 @@
             </ControlSetting>
           </ControlSettings>
         </ColumnUISetting>
+        <ColumnUISetting Name="SODU">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="TextEdit" Type="DevExpress.XtraEditors.TextEdit" AssemblyName="DevExpress.XtraEditors.v21.1" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
   </TableUISettings>

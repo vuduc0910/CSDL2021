@@ -237,6 +237,23 @@ namespace NGANHANG
                 f.Show();
             }
         }
+
+        private void barButtonSKGD_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormReportGiaoDich));
+            if (frm != null)
+            {
+                frm.Activate();
+                frm.Visible = true;
+            }
+
+            else
+            {
+                FormReportGiaoDich f = new FormReportGiaoDich();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
    
 }

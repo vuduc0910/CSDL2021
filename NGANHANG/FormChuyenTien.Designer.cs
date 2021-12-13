@@ -72,6 +72,8 @@ namespace NGANHANG
             this.colSODUTKCHUYEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSODUTKNHAN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControlDetail = new DevExpress.XtraEditors.PanelControl();
+            this.txtSODUTKN = new DevExpress.XtraEditors.TextEdit();
+            this.txtSoDuTKC = new DevExpress.XtraEditors.TextEdit();
             this.txtSoTKN = new System.Windows.Forms.TextBox();
             this.txtSoTKC = new System.Windows.Forms.TextBox();
             this.cmbMaNhanVien = new System.Windows.Forms.ComboBox();
@@ -79,8 +81,6 @@ namespace NGANHANG
             this.txtSoTien = new DevExpress.XtraEditors.TextEdit();
             this.dateEditNgayGD = new DevExpress.XtraEditors.DateEdit();
             this.bdsTaiKhoan = new System.Windows.Forms.BindingSource(this.components);
-            this.txtSoDuTKC = new DevExpress.XtraEditors.TextEdit();
-            this.txtSODUTKN = new DevExpress.XtraEditors.TextEdit();
             nGAYGDLabel = new System.Windows.Forms.Label();
             sOTIENLabel = new System.Windows.Forms.Label();
             mANVLabel = new System.Windows.Forms.Label();
@@ -95,13 +95,13 @@ namespace NGANHANG
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlDetail)).BeginInit();
             this.panelControlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSODUTKN.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoDuTKC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayGD.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayGD.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsTaiKhoan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoDuTKC.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSODUTKN.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // nGAYGDLabel
@@ -439,7 +439,11 @@ namespace NGANHANG
             // 
             // colSOTIEN
             // 
+            this.colSOTIEN.DisplayFormat.FormatString = "n0";
+            this.colSOTIEN.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSOTIEN.FieldName = "SOTIEN";
+            this.colSOTIEN.GroupFormat.FormatString = "n0";
+            this.colSOTIEN.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSOTIEN.Name = "colSOTIEN";
             this.colSOTIEN.Visible = true;
             this.colSOTIEN.VisibleIndex = 3;
@@ -455,15 +459,11 @@ namespace NGANHANG
             // 
             this.colSODUTKCHUYEN.FieldName = "SODUTKCHUYEN";
             this.colSODUTKCHUYEN.Name = "colSODUTKCHUYEN";
-            this.colSODUTKCHUYEN.Visible = true;
-            this.colSODUTKCHUYEN.VisibleIndex = 6;
             // 
             // colSODUTKNHAN
             // 
             this.colSODUTKNHAN.FieldName = "SODUTKNHAN";
             this.colSODUTKNHAN.Name = "colSODUTKNHAN";
-            this.colSODUTKNHAN.Visible = true;
-            this.colSODUTKNHAN.VisibleIndex = 7;
             // 
             // panelControlDetail
             // 
@@ -484,6 +484,31 @@ namespace NGANHANG
             this.panelControlDetail.Name = "panelControlDetail";
             this.panelControlDetail.Size = new System.Drawing.Size(1454, 619);
             this.panelControlDetail.TabIndex = 8;
+            this.panelControlDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControlDetail_Paint);
+            // 
+            // txtSODUTKN
+            // 
+            this.txtSODUTKN.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsCT, "SODUTKNHAN", true));
+            this.txtSODUTKN.Enabled = false;
+            this.txtSODUTKN.Location = new System.Drawing.Point(0, 573);
+            this.txtSODUTKN.MenuManager = this.barManager1;
+            this.txtSODUTKN.Name = "txtSODUTKN";
+            this.txtSODUTKN.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.txtSODUTKN.Properties.Appearance.Options.UseForeColor = true;
+            this.txtSODUTKN.Size = new System.Drawing.Size(10, 20);
+            this.txtSODUTKN.TabIndex = 13;
+            // 
+            // txtSoDuTKC
+            // 
+            this.txtSoDuTKC.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsCT, "SODUTKCHUYEN", true));
+            this.txtSoDuTKC.Enabled = false;
+            this.txtSoDuTKC.Location = new System.Drawing.Point(0, 599);
+            this.txtSoDuTKC.MenuManager = this.barManager1;
+            this.txtSoDuTKC.Name = "txtSoDuTKC";
+            this.txtSoDuTKC.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.txtSoDuTKC.Properties.Appearance.Options.UseForeColor = true;
+            this.txtSoDuTKC.Size = new System.Drawing.Size(10, 20);
+            this.txtSoDuTKC.TabIndex = 12;
             // 
             // txtSoTKN
             // 
@@ -553,30 +578,6 @@ namespace NGANHANG
             this.bdsTaiKhoan.DataMember = "TaiKhoan";
             this.bdsTaiKhoan.DataSource = this.DSCT;
             // 
-            // txtSoDuTKC
-            // 
-            this.txtSoDuTKC.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsCT, "SODUTKCHUYEN", true));
-            this.txtSoDuTKC.Enabled = false;
-            this.txtSoDuTKC.Location = new System.Drawing.Point(0, 579);
-            this.txtSoDuTKC.MenuManager = this.barManager1;
-            this.txtSoDuTKC.Name = "txtSoDuTKC";
-            this.txtSoDuTKC.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.txtSoDuTKC.Properties.Appearance.Options.UseForeColor = true;
-            this.txtSoDuTKC.Size = new System.Drawing.Size(10, 20);
-            this.txtSoDuTKC.TabIndex = 12;
-            // 
-            // txtSODUTKN
-            // 
-            this.txtSODUTKN.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsCT, "SODUTKNHAN", true));
-            this.txtSODUTKN.Enabled = false;
-            this.txtSODUTKN.Location = new System.Drawing.Point(0, 553);
-            this.txtSODUTKN.MenuManager = this.barManager1;
-            this.txtSODUTKN.Name = "txtSODUTKN";
-            this.txtSODUTKN.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.txtSODUTKN.Properties.Appearance.Options.UseForeColor = true;
-            this.txtSODUTKN.Size = new System.Drawing.Size(10, 20);
-            this.txtSODUTKN.TabIndex = 13;
-            // 
             // FormChuyenTien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -604,13 +605,13 @@ namespace NGANHANG
             ((System.ComponentModel.ISupportInitialize)(this.panelControlDetail)).EndInit();
             this.panelControlDetail.ResumeLayout(false);
             this.panelControlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSODUTKN.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoDuTKC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayGD.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayGD.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsTaiKhoan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoDuTKC.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSODUTKN.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

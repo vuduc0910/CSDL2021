@@ -220,7 +220,7 @@ namespace NGANHANG
                     MessageBox.Show("Số dư trong tài khoản không đủ, vui lòng kiểm tra lại!", "ERROR", MessageBoxButtons.OK);
                     return;
                 }
-                Program.myReader.Close();
+;                Program.myReader.Close();
                 try
                 {
                     int sotien = int.Parse(txtSoTien.Text.Trim().Replace(",", ""));
@@ -236,6 +236,7 @@ namespace NGANHANG
                 }
                 Program.myReader.Close();
                 Program.conn.Close();
+                txtSODU.Text = check.ToString();
             }
             try
             {

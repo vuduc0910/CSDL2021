@@ -67,16 +67,18 @@ namespace NGANHANG
             this.colNGAYGD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOTIEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSODU = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControlDetail = new DevExpress.XtraEditors.PanelControl();
             this.cmbMaNhanVien = new System.Windows.Forms.ComboBox();
+            this.bdsNhanVien = new System.Windows.Forms.BindingSource(this.components);
             this.cmbLoaiGD = new System.Windows.Forms.ComboBox();
             this.txtSoTien = new DevExpress.XtraEditors.TextEdit();
             this.dateEditNgayGD = new DevExpress.XtraEditors.DateEdit();
             this.cmbSoTK = new System.Windows.Forms.ComboBox();
             this.bdsTaiKhoan = new System.Windows.Forms.BindingSource(this.components);
             this.taiKhoanTableAdapter = new NGANHANG.DSGRTableAdapters.TaiKhoanTableAdapter();
-            this.bdsNhanVien = new System.Windows.Forms.BindingSource(this.components);
             this.nhanVienTableAdapter = new NGANHANG.DSGRTableAdapters.NhanVienTableAdapter();
+            this.txtSODU = new DevExpress.XtraEditors.TextEdit();
             sOTKLabel = new System.Windows.Forms.Label();
             nGAYGDLabel = new System.Windows.Forms.Label();
             sOTIENLabel = new System.Windows.Forms.Label();
@@ -91,11 +93,12 @@ namespace NGANHANG
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlDetail)).BeginInit();
             this.panelControlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayGD.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayGD.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsTaiKhoan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsNhanVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSODU.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // sOTKLabel
@@ -288,7 +291,7 @@ namespace NGANHANG
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 908);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 928);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1454, 20);
             // 
@@ -298,7 +301,7 @@ namespace NGANHANG
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 45);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 863);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 883);
             // 
             // barDockControlRight
             // 
@@ -306,7 +309,7 @@ namespace NGANHANG
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1454, 45);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 863);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 883);
             // 
             // btnIn
             // 
@@ -390,7 +393,8 @@ namespace NGANHANG
             this.colLOAIGD,
             this.colNGAYGD,
             this.colSOTIEN,
-            this.colMANV});
+            this.colMANV,
+            this.colSODU});
             this.gridView1.GridControl = this.goirutGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.ReadOnly = true;
@@ -442,8 +446,14 @@ namespace NGANHANG
             this.colMANV.Visible = true;
             this.colMANV.VisibleIndex = 5;
             // 
+            // colSODU
+            // 
+            this.colSODU.FieldName = "SODU";
+            this.colSODU.Name = "colSODU";
+            // 
             // panelControlDetail
             // 
+            this.panelControlDetail.Controls.Add(this.txtSODU);
             this.panelControlDetail.Controls.Add(mANVLabel);
             this.panelControlDetail.Controls.Add(this.cmbMaNhanVien);
             this.panelControlDetail.Controls.Add(lOAIGDLabel);
@@ -457,7 +467,7 @@ namespace NGANHANG
             this.panelControlDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControlDetail.Location = new System.Drawing.Point(0, 317);
             this.panelControlDetail.Name = "panelControlDetail";
-            this.panelControlDetail.Size = new System.Drawing.Size(1454, 591);
+            this.panelControlDetail.Size = new System.Drawing.Size(1454, 611);
             this.panelControlDetail.TabIndex = 7;
             // 
             // cmbMaNhanVien
@@ -474,6 +484,11 @@ namespace NGANHANG
             this.cmbMaNhanVien.TabIndex = 10;
             this.cmbMaNhanVien.ValueMember = "MANV";
             this.cmbMaNhanVien.SelectedIndexChanged += new System.EventHandler(this.mANVComboBox_SelectedIndexChanged);
+            // 
+            // bdsNhanVien
+            // 
+            this.bdsNhanVien.DataMember = "NhanVien";
+            this.bdsNhanVien.DataSource = this.DSGR;
             // 
             // cmbLoaiGD
             // 
@@ -540,20 +555,29 @@ namespace NGANHANG
             // 
             this.taiKhoanTableAdapter.ClearBeforeFill = true;
             // 
-            // bdsNhanVien
-            // 
-            this.bdsNhanVien.DataMember = "NhanVien";
-            this.bdsNhanVien.DataSource = this.DSGR;
-            // 
             // nhanVienTableAdapter
             // 
             this.nhanVienTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtSODU
+            // 
+            this.txtSODU.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsGR, "SODU", true));
+            this.txtSODU.Enabled = false;
+            this.txtSODU.Location = new System.Drawing.Point(0, 591);
+            this.txtSODU.MenuManager = this.barManager1;
+            this.txtSODU.Name = "txtSODU";
+            this.txtSODU.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.txtSODU.Properties.Appearance.Options.UseForeColor = true;
+            this.txtSODU.Properties.DisplayFormat.FormatString = "n0";
+            this.txtSODU.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtSODU.Size = new System.Drawing.Size(10, 20);
+            this.txtSODU.TabIndex = 12;
             // 
             // FormGoiRut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1454, 928);
+            this.ClientSize = new System.Drawing.Size(1454, 948);
             this.Controls.Add(this.panelControlDetail);
             this.Controls.Add(this.goirutGridControl);
             this.Controls.Add(this.panelControl1);
@@ -577,11 +601,12 @@ namespace NGANHANG
             ((System.ComponentModel.ISupportInitialize)(this.panelControlDetail)).EndInit();
             this.panelControlDetail.ResumeLayout(false);
             this.panelControlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayGD.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayGD.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsTaiKhoan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsNhanVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSODU.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -630,5 +655,7 @@ namespace NGANHANG
         private System.Windows.Forms.ComboBox cmbMaNhanVien;
         private System.Windows.Forms.BindingSource bdsNhanVien;
         private DSGRTableAdapters.NhanVienTableAdapter nhanVienTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn colSODU;
+        private DevExpress.XtraEditors.TextEdit txtSODU;
     }
 }

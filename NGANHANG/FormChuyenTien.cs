@@ -234,6 +234,7 @@ namespace NGANHANG
                     MessageBox.Show("Số dư trong tài khoản không đủ, vui lòng kiểm tra lại!", "ERROR", MessageBoxButtons.OK);
                     return;
                 }
+                txtSoDuTKC.Text = check.ToString();
                 Program.myReader.Close();
 
                 // TKN
@@ -247,6 +248,7 @@ namespace NGANHANG
                     MessageBox.Show("Số tài khoản nhận không tồn tại, vui lòng kiểm tra lại!", "ERROR", MessageBoxButtons.OK);
                     return;                        
                 }
+                txtSODUTKN.Text = check.ToString();
                 Program.myReader.Close();
                 lenh = "EXEC dbo.sp_chuyen_tien @stkc = N'"+ txtSoTKC.Text.Trim() + "', @stkn = N'"+ txtSoTKN.Text.Trim() + "', @st = "+ int.Parse(txtSoTien.Text.Trim().Replace(",", "")) + "";
                 Program.myReader = Program.ExecSqlDataReader(lenh);
@@ -302,6 +304,11 @@ namespace NGANHANG
             this.gD_CHUYENTIENTableAdapter.Fill(this.DSCT.GD_CHUYENTIEN);
             this.taiKhoanTableAdapter.Connection.ConnectionString = Program.connstr;
             this.taiKhoanTableAdapter.Fill(this.DSCT.TaiKhoan);
+        }
+
+        private void panelControlDetail_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
