@@ -593,6 +593,7 @@ namespace NGANHANG
             this.txtCMND.Name = "txtCMND";
             this.txtCMND.Size = new System.Drawing.Size(188, 21);
             this.txtCMND.TabIndex = 1;
+            this.txtCMND.TextChanged += new System.EventHandler(this.txtCMND_TextChanged);
             // 
             // FormKhachHang
             // 

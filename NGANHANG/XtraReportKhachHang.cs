@@ -15,7 +15,7 @@ namespace NGANHANG
         public XtraReportKhachHang(String mcn)
         {
             InitializeComponent();
-            this.sqlDataSource1.Connection.ConnectionString = Program.connstr;
+            this.sqlDataSource1.Connection.ConnectionString = Program.connstr_site3;
             this.sqlDataSource1.Queries[0].Parameters[0].Value = mcn;
             xrLabelTime.Text = DateTime.Now.ToString();
         }

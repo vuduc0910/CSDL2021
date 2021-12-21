@@ -560,11 +560,14 @@ namespace NGANHANG
             this.colTrangThaiXoa});
             this.gridView1.GridControl = this.nhanVienGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colMANV, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // colMANV
             // 
             this.colMANV.FieldName = "MANV";
             this.colMANV.Name = "colMANV";
+            this.colMANV.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.colMANV.Visible = true;
             this.colMANV.VisibleIndex = 0;
             this.colMANV.Width = 85;

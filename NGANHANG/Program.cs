@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace NGANHANG
 {
@@ -37,6 +38,7 @@ namespace NGANHANG
         public static String Chinhanh = "";
         public static Boolean Logout = false;
         public static BindingSource bds_DSPM = new BindingSource();  // giữ bdsPM khi đăng nhập
+        public static String connstr_site3 = "Data Source=DESKTOP-IPO5COR\\SERVER_3;Initial Catalog=NGANHANG;User ID=sa;password=123";
         public static int KetNoi()
         {
             if (Program.conn != null && Program.conn.State == ConnectionState.Open)
@@ -107,6 +109,16 @@ namespace NGANHANG
                 conn.Close();
                 return ex.State; // trang thai lỗi gởi từ RAISERROR trong SQL Server qua
             }
+        }
+        public static bool IsNumber(string pText)
+        {
+            Regex regex = new Regex(@"^[-+]?[0-9]*.?[0-9]+$");
+            return regex.IsMatch(pText);
+        }
+        public static bool IsPhoneNumber(string pText)
+        {
+            Regex regex = new Regex(@"^[0-9]{10,11}$");
+            return regex.IsMatch(pText);
         }
         [STAThread]
         static void Main()

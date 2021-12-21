@@ -185,6 +185,13 @@ namespace NGANHANG
                 txtSDT.Focus();
                 return;
             }
+            if(!Program.IsNumber(txtSDT.Text.Trim()) || !Program.IsPhoneNumber(txtSDT.Text.Trim()))
+            {
+
+                MessageBox.Show("Vui long nhap dung dinh dang sdt", "ERROR", MessageBoxButtons.OK);
+                txtSDT.Focus();
+                return;
+            }
             if(txtDiaChi.Text.Trim() == "")
             {
                 MessageBox.Show("Vui long nhap dia chi", "ERROR", MessageBoxButtons.OK);

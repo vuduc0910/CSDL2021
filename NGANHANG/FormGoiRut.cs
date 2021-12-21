@@ -193,6 +193,11 @@ namespace NGANHANG
                 MessageBox.Show("Vui lòng chọn số tiền ", "ERROR", MessageBoxButtons.OK);
                 return;
             }
+            if(!Program.IsNumber(txtSoTien.Text.Trim().Replace(",", "")))
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng số tiền ", "ERROR", MessageBoxButtons.OK);
+                return;
+            }
             if(int.Parse(txtSoTien.Text.Trim().Replace(",", "")) < 100000)
             {
                 MessageBox.Show("Vui lòng chọn số tiền >= 100,000 ", "ERROR", MessageBoxButtons.OK);

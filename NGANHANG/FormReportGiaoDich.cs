@@ -35,6 +35,7 @@ namespace NGANHANG
         private void FormReportGiaoDich_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dSTK.TaiKhoan' table. You can move, or remove it, as needed.
+            dSTK.EnforceConstraints = false;
             this.tableAdapterManager.Connection.ConnectionString = Program.connstr;
             this.taiKhoanTableAdapter.Fill(this.dSTK.TaiKhoan);
             comboBoxChiNhanh.DataSource = Program.bds_DSPM;

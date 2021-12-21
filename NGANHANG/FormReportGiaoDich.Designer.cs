@@ -58,6 +58,15 @@ namespace NGANHANG
             ((System.ComponentModel.ISupportInitialize)(this.bdsTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
+            // sOTKLabel
+            // 
+            sOTKLabel.AutoSize = true;
+            sOTKLabel.Location = new System.Drawing.Point(449, 420);
+            sOTKLabel.Name = "sOTKLabel";
+            sOTKLabel.Size = new System.Drawing.Size(39, 13);
+            sOTKLabel.TabIndex = 31;
+            sOTKLabel.Text = "SOTK:";
+            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.checkBoxAllStore);
@@ -193,15 +202,6 @@ namespace NGANHANG
             this.tableAdapterManager.GD_GOIRUTTableAdapter = null;
             this.tableAdapterManager.TaiKhoanTableAdapter = this.taiKhoanTableAdapter;
             this.tableAdapterManager.UpdateOrder = NGANHANG.DSTKTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // sOTKLabel
-            // 
-            sOTKLabel.AutoSize = true;
-            sOTKLabel.Location = new System.Drawing.Point(449, 420);
-            sOTKLabel.Name = "sOTKLabel";
-            sOTKLabel.Size = new System.Drawing.Size(39, 13);
-            sOTKLabel.TabIndex = 31;
-            sOTKLabel.Text = "SOTK:";
             // 
             // cmbSoTK
             // 

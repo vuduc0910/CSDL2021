@@ -196,9 +196,14 @@ namespace NGANHANG
                 MessageBox.Show("Vui lòng nhập số tài khoản nhận !!", "Erorr", MessageBoxButtons.OK);
                 return;
             }
-            if(txtSoTien.Text.Trim() == "")
+            if (txtSoTien.Text.Trim() == "")
             {
                 MessageBox.Show("Vui lòng nhập số tiền chuyển !!", "Erorr", MessageBoxButtons.OK);
+                return;
+            }
+            if (!Program.IsNumber(txtSoTien.Text.Trim().Replace(",", "")))
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng số tiền ", "ERROR", MessageBoxButtons.OK);
                 return;
             }
             if(int.Parse(txtSoTien.Text.Trim().Replace(",", "")) < 0)
@@ -250,10 +255,18 @@ namespace NGANHANG
                 }
                 txtSODUTKN.Text = check.ToString();
                 Program.myReader.Close();
-                lenh = "EXEC dbo.sp_chuyen_tien @stkc = N'"+ txtSoTKC.Text.Trim() + "', @stkn = N'"+ txtSoTKN.Text.Trim() + "', @st = "+ int.Parse(txtSoTien.Text.Trim().Replace(",", "")) + "";
-                Program.myReader = Program.ExecSqlDataReader(lenh);
-                if (Program.myReader == null) return;
-                Program.myReader.Read();
+                try
+                {
+                    lenh = "EXEC dbo.sp_chuyen_tien @stkc = N'" + txtSoTKC.Text.Trim() + "', @stkn = N'" + txtSoTKN.Text.Trim() + "', @st = " + int.Parse(txtSoTien.Text.Trim().Replace(",", "")) + "";
+                    Program.myReader = Program.ExecSqlDataReader(lenh);
+                    if (Program.myReader == null) return;
+                    Program.myReader.Read();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show( ex.Message, "ERROR", MessageBoxButtons.OK);
+                    return;
+                }
                 
             }
             try

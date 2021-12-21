@@ -168,6 +168,12 @@ namespace NGANHANG
                 txtCMND.Focus();
                 return;
             }
+            if (!Program.IsNumber(txtCMND.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng số cmnd", "ERROR", MessageBoxButtons.OK);
+                txtCMND.Focus();
+                return;
+            }
            if(txtHo.Text.Trim() == "")
             {
                 MessageBox.Show("Họ không thể để trống", "ERROR", MessageBoxButtons.OK);
@@ -183,6 +189,13 @@ namespace NGANHANG
             if (txtSDT.Text.Trim() == "")
             {
                 MessageBox.Show("SDT không thể để trống", "ERROR", MessageBoxButtons.OK);
+                txtSDT.Focus();
+                return;
+            }
+            if (!Program.IsNumber(txtSDT.Text.Trim()) || !Program.IsPhoneNumber(txtSDT.Text.Trim()))
+            {
+
+                MessageBox.Show("Vui long nhap dung dinh dang so dien thoai", "ERROR", MessageBoxButtons.OK);
                 txtSDT.Focus();
                 return;
             }
@@ -266,6 +279,11 @@ namespace NGANHANG
             this.khachHangTableAdapter.Fill(this.DSKH.KhachHang);
             this.v_PHAITableAdapter.Connection.ConnectionString = Program.connstr;
             this.v_PHAITableAdapter.Fill(this.DSKH.V_PHAI);
+        }
+
+        private void txtCMND_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
